@@ -2,6 +2,7 @@
   "expo": {
     "name": "491A",
     "slug": "491A",
+    "scheme": "491A-Project",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/adaptive-icon1.png",
@@ -25,6 +26,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
