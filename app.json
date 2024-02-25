@@ -28,6 +28,13 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/Cabin Condensed.ttf"]
+        }
+      ], 
+
       "expo-router"
     ]
   }
