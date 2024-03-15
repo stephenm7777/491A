@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Pressable, View, StyleSheet, ImageBackground, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
+import { useNavigation } from "expo-router";
+
 
 const backgroundImage = require('../../assets/images/png/010c80.png');
 
 
 export default function Register() {
+    const navigate = useNavigation();
     const [fontsLoaded] = useFonts({
       'Cabin Condensed': require('../../assets/fonts/Cabin Condensed.ttf'),
     });
@@ -35,6 +38,13 @@ export default function Register() {
               { /* Text */}
               <Text style={styles.logoFont}>ChatterBox</Text>
               <Text style={styles.account}>Register</Text>
+              <Pressable style={styles.backArrowHitBox}
+                onPress={() => {navigate.goBack()}}>
+                <Image style={styles.backArrow} source={require('../../assets/images/png/backArrow.png')} />
+              </Pressable>
+              
+              
+              
 
               {/* User Input */}
               <View style={styles.inputSection}>
@@ -149,6 +159,21 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 10, 
     fontSize: 16, 
+  },
+
+  backArrowHitBox: {
+    width: 50,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 45,
+    right: 20,
+  },
+ 
+  backArrow: {
+    width: 35,
+    height: 35,
   },
 
   loginButton: {
