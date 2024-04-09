@@ -14,6 +14,11 @@ export default function Page() {
 
   const handleLogin = () => { 
     // Implement your login logic here
+    // TEMPORARY TEMPORARY TEMPORARY
+    router.push({
+      pathname: "/users/chatPage",
+    })
+    // TEMPORARY TEMPORARY TEMPORARY
   }
 
   return (
