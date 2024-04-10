@@ -1,57 +1,57 @@
 import React, { useState } from 'react';
 import { Pressable, View, StyleSheet, ImageBackground, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
-import {router} from "expo-router";
+// import {router} from "expo-router";
 import { useNavigation } from "expo-router";
-
+// import { useRouter } from 'expo-next-react-navigation';
 
 const backgroundImage = require('../../assets/images/png/010c80.png');
 
-export default function ForgotPassword() {
+
+export default function ResetPassword() {
     const navigate = useNavigation();
     const [fontsLoaded] = useFonts({
         'Cabin Condensed': require('../../assets/fonts/Cabin Condensed.ttf'),
     });
-    const [email, setEmail] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleForgotPassword = () => {
-        // Logic to handle forgot password
+    const handleResetPassword = () => {
+        // Logic to handle reset password
     }
 
     return (
         <View style={styles.container}>
             <ImageBackground source={backgroundImage} resizeMode='cover' style={styles.image}>
                 <Image style={styles.tinyLogo} source={require('../../assets/images/splash1.png')} />
-                <Pressable style={styles.backArrowHitBox}
-                    //onPress={() => {navigate.goBack()}}>
-                    onPress={() => {navigate.goBack()}}>
-                <Image style={styles.backArrow} source={require('../../assets/images/png/backArrow.png')} />
-                </Pressable>
-
+                <Pressable                          // THIS TEMP BRINGS YOU TO RESET PASSWORD PAGE
+                        onPress={() => {navigate.navigate('index')}}>
+                            <Text style ={styles.fontID}>Don't have an account?<Text style={styles.registerLink}> Register</Text></Text>
+                    </Pressable>
                 <Text style={styles.logoFont}>ChatterBox</Text>
-                <Text style={styles.title}>Forgot Password</Text>
-
+                <Text style={styles.title}>Reset Password</Text>
 
                 <View style={styles.inputSection}>
-                <Text style={styles.instructions}>
-                        Please enter the email associated with your account below:
+                    <Text style={styles.instructions}>
+                        Please enter your new password and confirm it below:
                     </Text>
                     <TextInput
                         style={styles.input}
-                        placeholder='Email'
-                        value={email}
-                        onChangeText={setEmail}
+                        placeholder='New Password'
+                        secureTextEntry={true}
+                        value={newPassword}
+                        onChangeText={setNewPassword}
                     />
-                    <TouchableOpacity style={styles.button} onPress={handleForgotPassword}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder='Confirm New Password'
+                        secureTextEntry={true}
+                        value={confirmPassword}
+                        onChangeText={setConfirmPassword}
+                    />
+                    <TouchableOpacity style={styles.button} onPress={handleResetPassword}>
                         <Text style={styles.buttonText}>Reset Password</Text>
                     </TouchableOpacity>
-                    <Pressable                          // THIS TEMP BRINGS YOU TO RESET PASSWORD PAGE
-                        onPress={() => 
-                        router.push({
-                            pathname: "/users/resetPassword",
-                        })}>
-                            <Text style ={styles.fontID}>Don't have an account?<Text style={styles.registerLink}> Register</Text></Text>
-                    </Pressable>
                 </View>
             </ImageBackground>
             <Text style={styles.footer}>© 2024 ChatterBox. All Rights Reserved.</Text>
@@ -65,13 +65,15 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        justifyContent: 'flex-start',  
-        alignItems: 'flex-end',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     tinyLogo: {
         width: 150,
         height: 70,
-        margin: 20,   // Add margin for spacing
+        top: 35,
+        left: -20,
+        position: 'absolute',
     },
     logoFont: {
         fontFamily: 'Cabin Condensed',
@@ -89,6 +91,13 @@ const styles = StyleSheet.create({
         top: 100,
         left: 30,
         width: 250,
+    },
+    instructions: {
+        fontFamily: 'Cabin Condensed',
+        fontSize: 16,
+        color: 'black',
+        marginBottom: 10,
+        //textAlign: 'center',
     },
     inputSection: {
         width: '90%',
@@ -128,27 +137,4 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 10,
     },
-    fontID: { 
-        fontFamily: 'Cabin Condensed',
-        fontSize: 16, 
-    }, 
-    registerLink: {
-        fontFamily: 'Cabin Condensed',
-        color: 'blue',
-        fontSize: 16,
-        marginTop: 10,
-    },backArrowHitBox: {
-        width: 50,
-        height: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        top: 45,
-        right: 20,
-      },
-     
-      backArrow: {
-        width: 35,
-        height: 35,
-      },
 });
