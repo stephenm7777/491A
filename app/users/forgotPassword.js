@@ -22,18 +22,17 @@ export default function ForgotPassword() {
         <View style={styles.container}>
             <ImageBackground source={backgroundImage} resizeMode='cover' style={styles.image}>
                 <Image style={styles.tinyLogo} source={require('../../assets/images/splash1.png')} />
+                <Text style={styles.logoFont}>ChatterBox</Text>
                 <Pressable style={styles.backArrowHitBox}
-                    //onPress={() => {navigate.goBack()}}>
                     onPress={() => {navigate.goBack()}}>
-                <Image style={styles.backArrow} source={require('../../assets/images/png/backArrow.png')} />
+                    <Image style={styles.backArrow} source={require('../../assets/images/png/backArrow.png')} />
                 </Pressable>
 
-                <Text style={styles.logoFont}>ChatterBox</Text>
                 <Text style={styles.title}>Forgot Password</Text>
 
 
                 <View style={styles.inputSection}>
-                <Text style={styles.instructions}>
+                    <Text style={styles.instructions}>
                         Please enter the email associated with your account below:
                     </Text>
                     <TextInput
@@ -50,7 +49,7 @@ export default function ForgotPassword() {
                         router.push({
                             pathname: "/users/resetPassword",
                         })}>
-                            <Text style ={styles.fontID}>Don't have an account?<Text style={styles.registerLink}> Register</Text></Text>
+                            <Text style={styles.fontID}>Don't have an account?<Text style={styles.registerLink}> Register</Text></Text>
                     </Pressable>
                 </View>
             </ImageBackground>
@@ -65,13 +64,15 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        justifyContent: 'flex-start',  
-        alignItems: 'flex-end',
+        justifyContent: 'center',  
+        alignItems: 'center',
     },
     tinyLogo: {
         width: 150,
         height: 70,
-        margin: 20,   // Add margin for spacing
+        top: 35,
+        left: -20,
+        position: 'absolute',
     },
     logoFont: {
         fontFamily: 'Cabin Condensed',
@@ -88,24 +89,28 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 100,
         left: 30,
-        width: 250,
+        width: 250,        
+    },
+    instructions: {
+        fontFamily: 'Cabin Condensed',
+        fontSize: 16,
     },
     inputSection: {
+        fontFamily: 'Cabin Condensed',
         width: '90%',
         backgroundColor: 'white',
         padding: 20,
         borderRadius: 10,
-        marginTop: 90,
     },
     input: {
         fontFamily: 'Cabin Condensed',
         height: 40,
         borderColor: 'gray',
         borderWidth: 1,
-        marginBottom: 10,
+        marginBottom: 0,
         paddingLeft: 10,
         borderRadius: 5,
-        marginTop: 10,
+        marginTop: 15,
         fontSize: 16,
     },
     button: {
@@ -113,7 +118,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5,
         alignItems: 'center',
-        marginTop: 25,
+        marginTop: 20,
     },
     buttonText: {
         color: 'white',
@@ -137,7 +142,8 @@ const styles = StyleSheet.create({
         color: 'blue',
         fontSize: 16,
         marginTop: 10,
-    },backArrowHitBox: {
+    },
+    backArrowHitBox: {
         width: 50,
         height: 50,
         justifyContent: 'center',
