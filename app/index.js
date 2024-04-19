@@ -16,7 +16,7 @@ export default function Page() {
     // Implement your login logic here
     // TEMPORARY TEMPORARY TEMPORARY
     router.push({
-      pathname: "/users/chatPage",
+      pathname: "/users/contacts",
     })
     // TEMPORARY TEMPORARY TEMPORARY
   }
