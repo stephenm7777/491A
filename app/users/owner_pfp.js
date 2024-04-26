@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
 import { Pressable, View, StyleSheet, ImageBackground, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
-import { useNavigation } from '@react-navigation/native';
-import {router} from "expo-router";
+import {router, useNavigation } from "expo-router";
 
 function owner_pfp() {
 
     const navigation = useNavigation();
 
     const goToSettingsPage = () => {
-        navigation.navigate('users/profileSettings')}
+        router.push({
+            pathname: 'users/profileSettings',
+        })
+    }
 
     const goToEditProfilePage = () => {
-        navigation.navigate('users/edit_profile')}
+        router.push({
+            pathname: 'users/edit_profile',
+        })
+    }
+    const navigate = useNavigation();
     
- ß
     
 
   return (
@@ -23,22 +28,26 @@ function owner_pfp() {
         {/*Settings and privacy Button */}
         <TouchableOpacity style={styles.SettingsIcon} onPress={goToSettingsPage}>
         <Image
-            source= {require('/Users/danielpalacio/Downloads/School/491A/assets/images/profile/settings-icon.webp')}
+            source= {require('../../assets/images/png/settings-icon.webp')}
             style={styles.SettingsIcon}
         />
         </TouchableOpacity>
 
         {/*Profile picture */}
         <Image
-            source= {require('/Users/danielpalacio/Downloads/School/491A/assets/images/profile/profile-pic-holder.webp')}
+            source= {require('../../assets/images/png/profile-pic-holder.webp')}
             style={styles.profilePicture}
         /> 
 
         {/*Profile banner */}
         <Image
-            source={require('/Users/danielpalacio/Downloads/School/491A/assets/images/profile/profile-banner-placeholder.png')}
+            source={require('../../assets/images/png/profile-banner-placeholder.png')}
             style={styles.profileBanner}
         />
+        <Pressable style={styles.backArrowHitBox}
+                onPress={() => {navigate.goBack()}}>
+            <Image style={styles.backArrow} source={require('../../assets/images/png/backArrow.png')} />
+        </Pressable>
 
         {/*Username*/}
         <Text style={styles.profileUsername}>@profile-username</Text>
@@ -47,7 +56,7 @@ function owner_pfp() {
          {/* Edit Profile button*/}
         
         <View style = {styles.buttonContainer} >
-        <TouchableOpacity style={styles.editProfileButton} ofilonPress={goToEditPrePage}>
+        <TouchableOpacity style={styles.editProfileButton} onPress={goToEditProfilePage}>
             <Text style={styles.editProfileButtonText}>EDIT PROFILE</Text>
           </TouchableOpacity>
         </View> 
@@ -72,10 +81,11 @@ function owner_pfp() {
         position: 'absolute',
         width:40,
         height: 40,
-        top:5,
-        right:5,
+        top: '1%',
+        left:5,
         zIndex:2,
-        color: "black",
+        tintColor: '#F8FAFC',
+        // color: "black",
     },
 
     profilePicture: {
@@ -104,7 +114,7 @@ function owner_pfp() {
     
     profileUsername: {
         color: '#F8FAFC',
-        fontFamily: '/Users/danielpalacio/Downloads/School/491A/assets/fonts/Cabin Condensed.ttf',
+        fontFamily: 'Cabin Condensed',
         fontWeight: 'bold',
         position: 'absolute',
         top: 310, 
@@ -129,6 +139,22 @@ function owner_pfp() {
         fontSize: 18,
 
     },
+    
+    backArrowHitBox: {
+        width: 50,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        top: 5,
+        right: 5,
+    },
+     
+    backArrow: {
+        tintColor: 'white',
+        width: 35,
+        height: 35,
+    }
 
    
  })

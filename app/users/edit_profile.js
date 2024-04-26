@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Pressable, View, StyleSheet, ImageBackground, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
-import { useNavigation } from '@react-navigation/native';
-import {router} from "expo-router";
+import {router, useNavigation } from "expo-router";
 
 function owner_pfp() {
-
+  
+  const navigate = useNavigation();
   return (
     <View style={styles.container}>
 
         {/*Profile picture */}
         <Image
-            source= {require('/Users/danielpalacio/Downloads/School/491A/assets/images/profile/profile-pic-holder.webp')}
+            source= {require('../../assets/images/png/profile-pic-holder.webp')}
             style={styles.profilePicture}
         />
 
@@ -20,8 +20,8 @@ function owner_pfp() {
 
         {/*Profile banner */}
         <Image
-            source={require('/Users/danielpalacio/Downloads/School/491A/assets/images/profile/profile-banner-placeholder.png')}
-            style={styles.profileBanner}
+            source={require('../../assets/images/png/profile-banner-placeholder.png')}
+            style={styles.profileBanner} 
         />
 
         {/*change profile banner*/}
@@ -35,6 +35,11 @@ function owner_pfp() {
 
         {/*Username*/}
         <Text style={styles.Bio}>Bio</Text>
+
+        <Pressable style={styles.backArrowHitBox}
+                onPress={() => {navigate.goBack()}}>
+            <Image style={styles.backArrow} source={require('../../assets/images/png/backArrow.png')} />
+        </Pressable>
 
         
 
@@ -112,7 +117,7 @@ function owner_pfp() {
 
     profileUsername: {
         color: '#F8FAFC',
-        fontFamily: '/Users/danielpalacio/Downloads/School/491A/assets/fonts/Cabin Condensed.ttf',
+        fontFamily: 'Cabin Condensed',
         fontWeight: 'bold',
         position: 'absolute',
         top: 310, 
@@ -142,7 +147,7 @@ function owner_pfp() {
 
     Name: {
         color: '#F8FAFC',
-        fontFamily: '/Users/danielpalacio/Downloads/School/491A/assets/fonts/Cabin Condensed.ttf',
+        fontFamily: 'Cabin Condensed',
         fontWeight: 'bold',
         position: 'absolute',
         top: 350, 
@@ -152,7 +157,7 @@ function owner_pfp() {
       },
     Bio: {
         color: '#F8FAFC',
-        fontFamily: '/Users/danielpalacio/Downloads/School/491A/assets/fonts/Cabin Condensed.ttf',
+        fontFamily: 'Cabin Condensed',
         fontWeight: 'bold',
         position: 'absolute',
         top: 400, 
@@ -160,6 +165,21 @@ function owner_pfp() {
         fontSize: 22,
         
       },
+    backArrowHitBox: {
+        width: 50,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        top: 5,
+        right: 5,
+    },
+     
+    backArrow: {
+        tintColor: 'white',
+        width: 35,
+        height: 35,
+    }
 
    
  })

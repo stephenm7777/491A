@@ -1,43 +1,52 @@
 import React, { useState } from 'react';
 import { Pressable, View, StyleSheet, ImageBackground, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
+import {router, useNavigation } from "expo-router";
+
+
 
 function Visitor_pfp() {
-  return (
-    <View style={styles.container}>
+    const navigate = useNavigation();
+    return (
+        <View style={styles.container}>
 
 
-        {/*Profile picture */}
-        <Image
-            source= {require('/Users/danielpalacio/Downloads/School/491A/assets/images/profile/profile-pic-holder.webp')}
-            style={styles.profilePicture}
-        />
+            {/*Profile picture */}
+            <Image
+                source= {require('../../assets/images/png/profile-pic-holder.webp')}
+                style={styles.profilePicture}
+            />
 
-        {/*Profile banner */}
-        <Image
-            source={require('/Users/danielpalacio/Downloads/School/491A/assets/images/profile/profile-banner-placeholder.png')}
-            style={styles.profileBanner}
-        />
+            {/*Profile banner */}
+            <Image
+                source={require('../../assets/images/png/profile-banner-placeholder.png')}
+                style={styles.profileBanner}
+            />
 
-        {/*Username*/}
-        <Text style={styles.profileUsername}>@profile-username</Text>
+            {/*Username*/}
+            <Text style={styles.profileUsername}>@profile-username</Text>
+            <Pressable style={styles.backArrowHitBox}
+                    onPress={() => {navigate.goBack()}}>
+                <Image style={styles.backArrow} source={require('../../assets/images/png/backArrow.png')} />
+            </Pressable>
 
+            {/* Add Contact button*/}
+            <View style={styles.buttonsContainer}>
+                <View style = {styles.buttonContainer}>
+                <TouchableOpacity style={styles.addButton}>
+                    <Text style={styles.addButtonText}>+ ADD CONTACT</Text>
+                </TouchableOpacity>
+                </View>
 
-         {/* Add Contact button*/}
-        <View style = {styles.buttonContainer}>
-        <TouchableOpacity style={styles.addButton}>
-            <Text style={styles.addButtonText}>+ ADD CONTACT</Text>
-          </TouchableOpacity>
-        </View>
+                {/* Request Message button*/}
+                <View style = {styles.buttonContainer}>
+                <TouchableOpacity style={styles.requestButton}>
+                    <Text style={styles.requestButtonText}>REQUEST MESSAGE</Text>
+                </TouchableOpacity>
+                </View>
+            </View>
 
-        {/* Request Message button*/}
-        <View style = {styles.buttonContainer}>
-        <TouchableOpacity style={styles.requestButton}>
-            <Text style={styles.requestButtonText}>REQUEST MESSAGE</Text>
-          </TouchableOpacity>
-        </View>
-
-</View>
+    </View>
   );
 }
 
@@ -77,7 +86,7 @@ function Visitor_pfp() {
     
     profileUsername: {
         color: '#F8FAFC',
-        fontFamily: '/Users/danielpalacio/Downloads/School/491A/assets/fonts/Cabin Condensed.ttf',
+        fontFamily: 'Cabin Condensed',
         fontWeight: 'bold',
         position: 'absolute',
         top: 310, 
@@ -120,6 +129,26 @@ function Visitor_pfp() {
         fontSize: 18,
 
     },
+
+    buttonsContainer: {
+        marginTop: '20%',
+    },
+
+    backArrowHitBox: {
+        width: 50,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        top: 5,
+        right: 5,
+    },
+     
+    backArrow: {
+        tintColor: 'white',
+        width: 35,
+        height: 35,
+    }
 
     
 

@@ -13,7 +13,10 @@ const searchContact = () => {
 
 const viewProfile = () => {
     // redirect to profile page
-    alert("t'aime le zizi")
+    // alert("t'aime le zizi")
+    router.push({
+      pathname: "/users/owner_pfp",
+    })
 }
 
 const openContact = () => {

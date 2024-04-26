@@ -154,6 +154,7 @@ const styles = StyleSheet.create({
       },
      
       backArrow: {
+        tintColor: 'white',
         width: 35,
         height: 35,
       },
